@@ -10,12 +10,13 @@ import SwiftUI
 import Automerge
 
 import OSLog
-private let logger = Logger(subsystem: "Automerge-UITextView", category: "DocumentTextView")
+private let logger = Logger(subsystem: "AutomergeUITextView", category: "DocumentTextView")
 
 
 @MainActor struct DocumentTextView: UIViewRepresentable {
 //    typealias UIViewType = UITextView
-    
+
+    var note: DocumentTextStorage
 //    var document: Document
 //    var mutableString: NSMutableAttributedString
     
@@ -23,11 +24,29 @@ private let logger = Logger(subsystem: "Automerge-UITextView", category: "Docume
         let textLayoutManager = NSTextLayoutManager()
         let textContainer = NSTextContainer()
         textLayoutManager.textContainer = textContainer
-        let textContentStorage = NSTextContentStorage()  //is this Note?
+        
+        let textContentStorage = NSTextContentStorage()
+//        let textStorage = note
+        textContentStorage.textStorage = ProxyNSTextStorage(string: "Proxy Hello World")
         textContentStorage.addTextLayoutManager(textLayoutManager)
+        
+
+
                 
+//        let textView = UITextView(usingTextLayoutManager: true)
+//        textView.frame = .infinite
+//        textView.textLayoutManager = textLayoutManager
         let textView = UITextView(frame: .infinite, textContainer: textLayoutManager.textContainer)
-//        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textView.delegate = context.coordinator
+        
+        guard let _ = textView.textLayoutManager else {
+            fatalError("We are not in TextKit2 mode")
+        }
+
+        //        textLayoutManager.textContainer = textContainer
+//        textContentStorage.addTextLayoutManager(textLayoutManager)
+
+        //        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         textView.isScrollEnabled = true
         textView.isEditable = true
@@ -57,11 +76,11 @@ private let logger = Logger(subsystem: "Automerge-UITextView", category: "Docume
         init(_ documentTextView: DocumentTextView) {
             self.parent = documentTextView
             super.init()
-            NotificationCenter.default.addObserver(self, selector: #selector(textStorageDidEndEditing), name: NSTextStorage.didProcessEditingNotification , object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(textStorageDidEndEditing), name: NSTextStorage.didProcessEditingNotification , object: nil)
         }
         
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            logger.debug("Text is about to change from '\(textView.text ?? "")' to ...")
+            logger.debug("Text is about to change from '\(textView.text ?? "")' at \(range) to `\(text)`")
             return true
         }
         
@@ -70,27 +89,27 @@ private let logger = Logger(subsystem: "Automerge-UITextView", category: "Docume
          in response to user-initiated changes to the text
          */
         func textViewDidChange(_ textView: UITextView) {
-            logger.debug("textViewDid.Change")
+            logger.debug("textViewDidChange")
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
-            logger.debug("textViewDid.BeginEditing")
+            logger.debug("textViewDidBeginEditing")
         }
         
         func textViewDidEndEditing(_ textView: UITextView) {
-            logger.debug("textViewDid.EndEditing")
+            logger.debug("textViewDidEndEditing")
         }
         
         @objc func textStorageDidEndEditing(notification: Notification) {
-            logger.debug("#cursor NSTextStorage did end editing")
+            logger.debug("textStorageDidEndEditing")
         }
                 
         func textViewDidChangeSelection(_ textView: UITextView) {
-            logger.debug("#cursor textViewDidChangeSelection")
+            logger.debug("textStorageDidEndEditing")
         }
         
-        deinit {
-            NotificationCenter.default.removeObserver(self)
-        }
+//        deinit {
+//            NotificationCenter.default.removeObserver(self)
+//        }
     }
 }

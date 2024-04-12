@@ -12,10 +12,12 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
+    var note = DocumentTextStorage(string: "Hello World")
+    
     var body: some View {
         VStack {
             Text("Note")
-            DocumentTextView()
+            DocumentTextView(note: note)
         }
     }
 }

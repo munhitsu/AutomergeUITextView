@@ -8,21 +8,29 @@
 import Foundation
 import SwiftUI
 
-class ProxyNSTextStorage: NSTextStorage {
-    private var data = NSTextStorage()
+import OSLog
+private let logger = Logger(subsystem: "AutomergeUITextView", category: "ProxyNSTextStorage")
+
+class ProxyTextStorage: NSTextStorage {
+    private var data:NSMutableAttributedString // also works proxying to NSTextStorage
     
+    
+    override init() {
+        data = NSMutableAttributedString()
+        super.init()
+    }
     
     override init(string: String) {
+        data = NSMutableAttributedString(string: string)
         super.init()
-        data = NSTextStorage(string: string)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var string: String {
-        data.string
+    override var string: String { // this gets called all the time - make sure it's cheap
+        return data.string
     }
 
     override func replaceCharacters(in range: NSRange, with str: String) {

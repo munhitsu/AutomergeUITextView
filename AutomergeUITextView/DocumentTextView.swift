@@ -14,11 +14,8 @@ private let logger = Logger(subsystem: "AutomergeUITextView", category: "Documen
 
 
 @MainActor struct DocumentTextView: UIViewRepresentable {
-//    typealias UIViewType = UITextView
 
-    var note: DocumentTextStorage
-//    var document: Document
-//    var mutableString: NSMutableAttributedString
+    var textStorage: NSTextStorage
     
     func makeUIView(context: Context) -> UITextView {
         let textLayoutManager = NSTextLayoutManager()
@@ -26,27 +23,15 @@ private let logger = Logger(subsystem: "AutomergeUITextView", category: "Documen
         textLayoutManager.textContainer = textContainer
         
         let textContentStorage = NSTextContentStorage()
-//        let textStorage = note
-        textContentStorage.textStorage = ProxyNSTextStorage(string: "Proxy Hello World")
+        textContentStorage.textStorage = textStorage
         textContentStorage.addTextLayoutManager(textLayoutManager)
-        
-
-
-                
-//        let textView = UITextView(usingTextLayoutManager: true)
-//        textView.frame = .infinite
-//        textView.textLayoutManager = textLayoutManager
+                        
         let textView = UITextView(frame: .infinite, textContainer: textLayoutManager.textContainer)
         textView.delegate = context.coordinator
         
         guard let _ = textView.textLayoutManager else {
             fatalError("We are not in TextKit2 mode")
         }
-
-        //        textLayoutManager.textContainer = textContainer
-//        textContentStorage.addTextLayoutManager(textLayoutManager)
-
-        //        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         textView.isScrollEnabled = true
         textView.isEditable = true
@@ -76,7 +61,6 @@ private let logger = Logger(subsystem: "AutomergeUITextView", category: "Documen
         init(_ documentTextView: DocumentTextView) {
             self.parent = documentTextView
             super.init()
-//            NotificationCenter.default.addObserver(self, selector: #selector(textStorageDidEndEditing), name: NSTextStorage.didProcessEditingNotification , object: nil)
         }
         
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -107,9 +91,5 @@ private let logger = Logger(subsystem: "AutomergeUITextView", category: "Documen
         func textViewDidChangeSelection(_ textView: UITextView) {
             logger.debug("textStorageDidEndEditing")
         }
-        
-//        deinit {
-//            NotificationCenter.default.removeObserver(self)
-//        }
     }
 }

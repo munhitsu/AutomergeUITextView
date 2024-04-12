@@ -18,7 +18,8 @@
 		BB968BD52BC965C5002BF9E8 /* DocumentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */; };
 		BB968BD92BC9665E002BF9E8 /* Automerge in Frameworks */ = {isa = PBXBuildFile; productRef = BB968BD82BC9665E002BF9E8 /* Automerge */; };
 		BB968BDF2BC96A6A002BF9E8 /* DocumentTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BDE2BC96A6A002BF9E8 /* DocumentTextStorage.swift */; };
-		BB968BE12BC9A379002BF9E8 /* ProxyNSTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BE02BC9A379002BF9E8 /* ProxyNSTextStorage.swift */; };
+		BB968BE12BC9A379002BF9E8 /* ProxyTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BE02BC9A379002BF9E8 /* ProxyTextStorage.swift */; };
+		BB968BE32BC9C45E002BF9E8 /* DocumentCachingTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BE22BC9C45E002BF9E8 /* DocumentCachingTextStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,9 @@
 		BB968BC72BC965AD002BF9E8 /* AutomergeUITextViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomergeUITextViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTextView.swift; sourceTree = "<group>"; };
 		BB968BDE2BC96A6A002BF9E8 /* DocumentTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTextStorage.swift; sourceTree = "<group>"; };
-		BB968BE02BC9A379002BF9E8 /* ProxyNSTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyNSTextStorage.swift; sourceTree = "<group>"; };
+		BB968BE02BC9A379002BF9E8 /* ProxyTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyTextStorage.swift; sourceTree = "<group>"; };
+		BB968BE22BC9C45E002BF9E8 /* DocumentCachingTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCachingTextStorage.swift; sourceTree = "<group>"; };
+		BB968BE42BC9D255002BF9E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 		BB968B9B2BC965AB002BF9E8 = {
 			isa = PBXGroup;
 			children = (
+				BB968BE42BC9D255002BF9E8 /* README.md */,
 				BB968BA62BC965AB002BF9E8 /* AutomergeUITextView */,
 				BB968BBA2BC965AD002BF9E8 /* AutomergeUITextViewTests */,
 				BB968BC42BC965AD002BF9E8 /* AutomergeUITextViewUITests */,
@@ -114,7 +118,8 @@
 				BB968BB02BC965AD002BF9E8 /* Preview Content */,
 				BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */,
 				BB968BDE2BC96A6A002BF9E8 /* DocumentTextStorage.swift */,
-				BB968BE02BC9A379002BF9E8 /* ProxyNSTextStorage.swift */,
+				BB968BE22BC9C45E002BF9E8 /* DocumentCachingTextStorage.swift */,
+				BB968BE02BC9A379002BF9E8 /* ProxyTextStorage.swift */,
 			);
 			path = AutomergeUITextView;
 			sourceTree = "<group>";
@@ -289,10 +294,11 @@
 			files = (
 				BB968BDF2BC96A6A002BF9E8 /* DocumentTextStorage.swift in Sources */,
 				BB968BD52BC965C5002BF9E8 /* DocumentTextView.swift in Sources */,
-				BB968BE12BC9A379002BF9E8 /* ProxyNSTextStorage.swift in Sources */,
+				BB968BE12BC9A379002BF9E8 /* ProxyTextStorage.swift in Sources */,
 				BB968BAA2BC965AB002BF9E8 /* ContentView.swift in Sources */,
 				BB968BAC2BC965AB002BF9E8 /* Item.swift in Sources */,
 				BB968BA82BC965AB002BF9E8 /* AutomergeUITextViewApp.swift in Sources */,
+				BB968BE32BC9C45E002BF9E8 /* DocumentCachingTextStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

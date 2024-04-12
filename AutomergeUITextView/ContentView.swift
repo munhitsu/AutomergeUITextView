@@ -12,12 +12,34 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
-    var note = DocumentTextStorage(string: "Hello World")
-    
+    var documentTS = DocumentTextStorage(string: "Hello World")
+    var documentCachingTS = DocumentCachingTextStorage(string: "Hello World")
+    var proxyTS = ProxyTextStorage(string: "Hello World")
+    var nativeTS = NSTextStorage(string: "Hello World")
+
     var body: some View {
-        VStack {
-            Text("Note")
-            DocumentTextView(note: note)
+        TabView {
+            VStack {
+                Text("NSTextStorage")
+                DocumentTextView(textStorage: nativeTS)
+            }
+            .tabItem { Label("Native", systemImage: "cpu") }
+            VStack {
+                Text("Proxy to NSTextStorage")
+                DocumentTextView(textStorage: proxyTS)
+            }
+            .tabItem { Label("Proxy", systemImage: "cpu.fill") }
+            VStack {
+                Text("Automerge Document")
+                DocumentTextView(textStorage: documentTS)
+            }
+            .tabItem { Label("document", systemImage: "arrow.left.arrow.right") }
+            VStack {
+                Text("Automerge Document Cached")
+                DocumentTextView(textStorage: documentCachingTS)
+            }
+            .tabItem { Label("cached", systemImage: "memorychip") }
+
         }
     }
 }

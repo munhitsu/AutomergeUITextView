@@ -15,6 +15,8 @@
 		BB968BBC2BC965AD002BF9E8 /* AutomergeUITextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BBB2BC965AD002BF9E8 /* AutomergeUITextViewTests.swift */; };
 		BB968BC62BC965AD002BF9E8 /* AutomergeUITextViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BC52BC965AD002BF9E8 /* AutomergeUITextViewUITests.swift */; };
 		BB968BC82BC965AD002BF9E8 /* AutomergeUITextViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BC72BC965AD002BF9E8 /* AutomergeUITextViewUITestsLaunchTests.swift */; };
+		BB968BD52BC965C5002BF9E8 /* DocumentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */; };
+		BB968BD92BC9665E002BF9E8 /* Automerge in Frameworks */ = {isa = PBXBuildFile; productRef = BB968BD82BC9665E002BF9E8 /* Automerge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		BB968BC12BC965AD002BF9E8 /* AutomergeUITextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomergeUITextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB968BC52BC965AD002BF9E8 /* AutomergeUITextViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomergeUITextViewUITests.swift; sourceTree = "<group>"; };
 		BB968BC72BC965AD002BF9E8 /* AutomergeUITextViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomergeUITextViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB968BD92BC9665E002BF9E8 /* Automerge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 				BB968BBA2BC965AD002BF9E8 /* AutomergeUITextViewTests */,
 				BB968BC42BC965AD002BF9E8 /* AutomergeUITextViewUITests */,
 				BB968BA52BC965AB002BF9E8 /* Products */,
+				BB968BD72BC9665E002BF9E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +108,7 @@
 				BB968BAD2BC965AD002BF9E8 /* Assets.xcassets */,
 				BB968BAF2BC965AD002BF9E8 /* AutomergeUITextView.entitlements */,
 				BB968BB02BC965AD002BF9E8 /* Preview Content */,
+				BB968BD42BC965C5002BF9E8 /* DocumentTextView.swift */,
 			);
 			path = AutomergeUITextView;
 			sourceTree = "<group>";
@@ -132,6 +138,13 @@
 			path = AutomergeUITextViewUITests;
 			sourceTree = "<group>";
 		};
+		BB968BD72BC9665E002BF9E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,6 +161,9 @@
 			dependencies = (
 			);
 			name = AutomergeUITextView;
+			packageProductDependencies = (
+				BB968BD82BC9665E002BF9E8 /* Automerge */,
+			);
 			productName = AutomergeUITextView;
 			productReference = BB968BA42BC965AB002BF9E8 /* AutomergeUITextView.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +236,9 @@
 				Base,
 			);
 			mainGroup = BB968B9B2BC965AB002BF9E8;
+			packageReferences = (
+				BB968BD62BC96614002BF9E8 /* XCRemoteSwiftPackageReference "automerge-swift" */,
+			);
 			productRefGroup = BB968BA52BC965AB002BF9E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB968BD52BC965C5002BF9E8 /* DocumentTextView.swift in Sources */,
 				BB968BAA2BC965AB002BF9E8 /* ContentView.swift in Sources */,
 				BB968BAC2BC965AB002BF9E8 /* Item.swift in Sources */,
 				BB968BA82BC965AB002BF9E8 /* AutomergeUITextViewApp.swift in Sources */,
@@ -621,6 +641,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB968BD62BC96614002BF9E8 /* XCRemoteSwiftPackageReference "automerge-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/automerge/automerge-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.12;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB968BD82BC9665E002BF9E8 /* Automerge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB968BD62BC96614002BF9E8 /* XCRemoteSwiftPackageReference "automerge-swift" */;
+			productName = Automerge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB968B9C2BC965AB002BF9E8 /* Project object */;
 }
